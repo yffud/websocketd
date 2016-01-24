@@ -54,6 +54,11 @@ Options:
   --passenv VAR[,VAR...]         Lists environment variables allowed to be
                                  passed to executed scripts.
 
+  --binary={true,false}          Switches communication to binary, process reads
+                                 send to browser as blobs and all reads from the
+                                 browser are immediately flushed to the process.
+                                 Default: false
+
   --reverselookup={true,false}   Perform DNS reverse lookups on remote clients.
                                  Default: true
 
@@ -65,6 +70,13 @@ Options:
   --staticdir=DIR                Serve static files in this directory over HTTP.
 
   --cgidir=DIR                   Serve CGI scripts in this directory over HTTP.
+
+  --maxforks=N                   Limit number of processes that websocketd is 
+                                 able to execute with WS and CGI handlers.
+                                 When maxforks reached the server will be 
+                                 rejecting requests that require executing 
+                                 another process (unlimited when 0 or negative).
+                                 Default: 0
 
   --header="..."                 Set custom HTTP header to each answer. For
                                  example: --header="Server: someserver/0.0.1"
